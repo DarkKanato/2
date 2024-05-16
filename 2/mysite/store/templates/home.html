@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+</head>
+<body>
+    <h1>Добро пожаловать на наш сайт!</h1>
+
+    <h2>Клиенты</h2>
+    <ul>
+        {% for client in clients %}
+            <li>{{ client.name }} - {{ client.email }}</li>
+        {% empty %}
+            <li>Клиентов пока нет.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Товары</h2>
+    <ul>
+        {% for product in products %}
+            <li>{{ product.name }} - {{ product.price }} руб.</li>
+        {% empty %}
+            <li>Товаров пока нет.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Заказы</h2>
+    <ul>
+        {% for order in orders %}
+            <li>Заказ №{{ order.id }} на сумму {{ order.total_amount }} руб.</li>
+        {% empty %}
+            <li>Заказов пока нет.</li>
+        {% endfor %}
+    </ul>
+    <h2>Добавить нового клиента</h2>
+<a href="{% url 'add_client' %}">Добавить клиента</a>
+
+<h2>Добавить новый товар</h2>
+<a href="{% url 'add_product' %}">Добавить товар</a>
+
+<h2>Добавить новый заказ</h2>
+<a href="{% url 'add_order' %}">Добавить заказ</a>
+</body>
+</html>
